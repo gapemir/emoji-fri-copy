@@ -11,8 +11,8 @@ function init() {
 }
 
 const EmojiCopySettingsWidget = new GObject.Class({
-    Name: 'EmojiCopy.Prefs.Widget',
-    GTypeName: 'EmojiCopyPrefsWidget',
+    Name: 'EmojiFriCopy.Prefs.Widget',
+    GTypeName: 'EmojiFriCopyPrefsWidget',
 
     _init(settings) {
         this.settings = settings;
@@ -52,6 +52,14 @@ const EmojiCopySettingsWidget = new GObject.Class({
         this.settings.connect('changed::emojisize', () => {
             emojiSize.set_value(this.settings.get_int('emojisize'));
         });
+
+        let resetToDefaultBtn = builder.get_object('resettodefault_btn');
+        resetToDefaultBtn.set_label("RESET")
+
+        resetToDefaultBtn.connect('clicked', widget => {
+            this._resetToDefaults();
+        });
+
 
         let pasteonselectSwitch = builder.get_object('pasteonselect_switch');
         pasteonselectSwitch.set_state(this.settings.get_boolean('paste-on-select'));
@@ -152,6 +160,19 @@ const EmojiCopySettingsWidget = new GObject.Class({
         }
 
         builder.get_object('link-btn').set_uri(Me.metadata.url.toString());
+    },
+
+    _resetToDefaults(){
+        this.settings.reset("position")
+        this.settings.reset("nbcols")
+        this.settings.reset("emojisize")
+        this.settings.reset("recently-used")
+        this.settings.reset("paste-on-select")
+        this.settings.reset("use-keybinding")
+        this.settings.reset("always-show")
+        this.settings.reset("skin-tone")
+        this.settings.reset("gender")
+        this.settings.reset("emoji-keybinding")
     }
 
 });

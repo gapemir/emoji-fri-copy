@@ -67,6 +67,17 @@ var EmojiCategory = class EmojiCategory {
             x_align: Clutter.ActorAlign.CENTER,
         });
         this.categoryButton.connect('clicked', this._toggle.bind(this));
+        this.categoryButton.connect('notify::hover', (a, _) => {
+            if (a.hover) {
+                let [bx, by] = this.categoryButton.get_transformed_position();
+                let [bWidth, bHeight] = this.categoryButton.get_transformed_size();
+                Extension.GLOBAL_BUTTON.tooltip.set_text( this.categoryName )
+                Extension.GLOBAL_BUTTON.tooltip.set_position(bx + bWidth / 2 - Extension.GLOBAL_BUTTON.tooltip.width / 2, by - 40);
+                Extension.GLOBAL_BUTTON.tooltip.show()
+            } else {
+                Extension.GLOBAL_BUTTON.tooltip.hide()
+            }
+        });
 
         this._built = false; // will be true once the user opens the category
         this._loaded = false; // will be true once loaded

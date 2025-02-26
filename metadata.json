@@ -1,8 +1,8 @@
 {
-  "description": "Emoji copy is a versatile extension designed to simplify emoji selection and clipboard management.\n\nIt is a fork of Emoji Selector.",
+  "description": "Emoji FRI copy is a versatile extension designed to simplify emoji selection.\n\nIt is a fork of Emoji Copy.",
   "gettext-domain": "emoji-fri-copy",
   "name": "Emoji Fri Copy",
-  "settings-schema": "org.gnome.shell.extensions.emoji-copy",
+  "settings-schema": "org.gnome.shell.extensions.emoji-fri-copy",
   "shell-version": [
     "40",
     "41",

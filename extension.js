@@ -46,10 +46,15 @@ var NB_COLS;
 
 let timeoutSourceId = null;
 
+const EMOJIS_CHARACTERS = Me.imports.data.emojisCharacters.ALL;
+const EMOJIS_KEYWORDS = Me.imports.data.emojisKeywords.ALL_KEYWORDS;
+
 /*
  * This is the main class of this extension, corresponding to the button in the
  * top panel and its menu.
  */
+
+//ln -s ~/Desktop/code/js/emoji-fri-copy  emoji-fri-copy@gapemir
 class EmojisMenu {
     constructor() {
         this.super_btn = new PanelMenu.Button(0.0, _("Emoji Copy"), false);
@@ -105,6 +110,23 @@ class EmojisMenu {
 
         if (SETTINGS.get_boolean('use-keybinding')) {
             this._bindShortcut();
+        }
+
+        this.tooltip = new St.Label({
+            text: "This is a tooltip",
+            style_class: 'tooltip-label'
+        });
+        global.stage.add_child(this.tooltip);
+
+        this.namesMap = new Map();
+        if (EMOJIS_CHARACTERS.length === EMOJIS_KEYWORDS.length) {
+            for (let i = 0; i < EMOJIS_CHARACTERS.length; i++) {
+                if (EMOJIS_CHARACTERS[i].length === EMOJIS_KEYWORDS[i].length) {
+                    for (let j = 0; j < EMOJIS_CHARACTERS[i].length; j++) {
+                        this.namesMap.set(EMOJIS_CHARACTERS[i][j], EMOJIS_KEYWORDS[i][j][0]);
+                    }
+                }
+            }
         }
     }
 

@@ -57,6 +57,24 @@ var EmojiButton = class EmojiButton {
         this.super_btn.connect('button-press-event', this.onButtonPress.bind(this));
         this.super_btn.connect('key-press-event', this.onKeyPress.bind(this));
 
+        if (category == null || this.keywords == []) {
+            this.super_btn.connect('notify::hover', (a, _) => {
+                if (a.hover) {
+                    let [bx, by] = this.super_btn.get_transformed_position();
+                    let [bWidth, bHeight] = this.super_btn.get_transformed_size();
+                    let text = Extension.GLOBAL_BUTTON.namesMap.get(this.super_btn.label)
+                    if( !text )
+                        text = Extension.GLOBAL_BUTTON.namesMap.get(this.super_btn.label.slice(0,2))
+                    //log("FULL=",this.super_btn.label, "   SPLICED=",this.super_btn.label.slice(0,2), "   LENGTH=", this.super_btn.label.length,"   ENCODED:", encodeURIComponent(this.super_btn.label))
+                    Extension.GLOBAL_BUTTON.tooltip.set_text( text ? text : "PENGO" )
+                    Extension.GLOBAL_BUTTON.tooltip.set_position(bx + bWidth / 2 - Extension.GLOBAL_BUTTON.tooltip.width / 2, by - 40);
+                    Extension.GLOBAL_BUTTON.tooltip.show()
+                } else {
+                    Extension.GLOBAL_BUTTON.tooltip.hide()
+                }
+            });
+        }
+
         if (category == null || this.keywords == []) { return; }
 
         // Update the category label on hover, allowing the user to know the

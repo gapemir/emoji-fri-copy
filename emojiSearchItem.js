@@ -61,6 +61,7 @@ var EmojiSearchItem = class EmojiSearchItem {
             return;
         } // else { ...
         searchedText = searchedText.toLowerCase();
+        log(searchedText)
 
         for (let j = 0; j < this._nbColumns; j++) {
             this._recents[j].super_btn.label = '';
@@ -81,6 +82,7 @@ var EmojiSearchItem = class EmojiSearchItem {
         results = this._getResults(searchedText, minCat, maxCat, results, 2);
         // Finally, search across all keywords
         results = this._getResults(searchedText, minCat, maxCat, results, 1);
+        log(results)
 
         let firstEmptyIndex = 0;
         for (let i = 0; i < results.length; i++) {

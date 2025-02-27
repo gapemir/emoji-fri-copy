@@ -124,7 +124,7 @@ class EmojisMenu {
         global.stage.add_child(this.tooltip);
         this.tooltip.hide();
 
-        this.namesMap = new Map();
+        /*this.namesMap = new Map();
         if (EMOJIS_CHARACTERS.length === EMOJIS_KEYWORDS.length) {
             for (let i = 0; i < EMOJIS_CHARACTERS.length; i++) {
                 if (EMOJIS_CHARACTERS[i].length === EMOJIS_KEYWORDS[i].length) {
@@ -133,7 +133,7 @@ class EmojisMenu {
                     }
                 }
             }
-        }
+        }*/
     }
 
     _connectSignals() {

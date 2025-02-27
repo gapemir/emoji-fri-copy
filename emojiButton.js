@@ -148,7 +148,7 @@ var EmojiButton = class EmojiButton {
         }
         return Clutter.EVENT_PROPAGATE;
     }
-
+    
     replaceClipboardAndClose(emojiToCopy) {
         Clipboard.set_text(
             CLIPBOARD_TYPE,
@@ -160,7 +160,7 @@ var EmojiButton = class EmojiButton {
 
         return Clutter.EVENT_STOP;
     }
-
+    
     replaceClipboardAndStay(emojiToCopy) {
         Clipboard.set_text(
             CLIPBOARD_TYPE,
@@ -182,7 +182,7 @@ var EmojiButton = class EmojiButton {
 
         if (Extension.SETTINGS.get_boolean('paste-on-select')) this.triggerPasteHack();
 
-        return Clutter.EVENT_STOP;
+        return Clutter.EVENT_STOMainloopP;
     }
 
     /*

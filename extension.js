@@ -57,7 +57,7 @@ const EMOJIS_KEYWORDS = Me.imports.data.emojisKeywords.ALL_KEYWORDS;
 //ln -s ~/Desktop/code/js/emoji-fri-copy  emoji-fri-copy@gapemir
 class EmojisMenu {
     constructor() {
-        this.super_btn = new PanelMenu.Button(0.0, _("Emoji Copy"), false);
+        this.super_btn = new PanelMenu.Button(0.0, _("Emoji Fri Copy"), false);
         let box = new St.BoxLayout();
         let icon = new St.Icon({
             icon_name: 'face-cool-symbolic',
@@ -117,6 +117,7 @@ class EmojisMenu {
             style_class: 'tooltip-label'
         });
         global.stage.add_child(this.tooltip);
+        this.tooltip.hide();
 
         this.namesMap = new Map();
         if (EMOJIS_CHARACTERS.length === EMOJIS_KEYWORDS.length) {

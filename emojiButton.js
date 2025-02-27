@@ -33,7 +33,7 @@ var EmojiButton = class EmojiButton {
         let tonable = false;
         let genrable = false;
         let gendered = false;
-        for (let j = 0; j < keywords.length; j++) {
+        /*for (let j = 0; j < keywords.length; j++) {
             if (keywords[j] == 'HAS_TONE') {
                 tonable = true;
             } else if (keywords[j] == 'HAS_GENDER') {
@@ -42,7 +42,7 @@ var EmojiButton = class EmojiButton {
                 gendered = true;
             }
         }
-        this.tags = [tonable, genrable, gendered];
+        this.tags = [tonable, genrable, gendered];*/
         this.keywords = keywords;
     }
 
@@ -81,7 +81,7 @@ var EmojiButton = class EmojiButton {
         // name of the emoji he's copying.
         this.super_btn.connect('notify::hover', (a, _) => {
             if (a.hover) {
-                category.super_item.label.text = this.keywords[0];
+                category.super_item.label.text = this.keywords[0].substring(0,30);
             } else {
                 category.super_item.label.text = category.categoryName;
             }

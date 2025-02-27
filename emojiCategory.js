@@ -16,8 +16,18 @@ const EmojiButton = Me.imports.emojiButton;
  * - skin tone management
  * - gender management
  */
-const EMOJIS_CHARACTERS = Me.imports.data.emojisCharacters.ALL;
-const EMOJIS_KEYWORDS = Me.imports.data.emojisKeywords.ALL_KEYWORDS;
+var EMOJIS_CHARACTERS = Me.imports.data.emojisCharacters.ALL;
+var EMOJIS_KEYWORDS = Me.imports.data.emojisKeywords.ALL_KEYWORDS;
+log("HEREEEEEEEEEEEEEEEEEEe")
+
+var DEBUG=true;
+
+
+if(DEBUG){
+    log("DEBUG")
+    var EMOJIS_CHARACTERS = Me.imports.data.emojis_new.ALL;
+    var EMOJIS_KEYWORDS = Me.imports.data.keywords_new.ALL_KEYWORDS;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -28,6 +38,7 @@ var EmojiCategory = class EmojiCategory {
      * memory issues with emojis' image textures.
      */
     constructor(categoryName, iconName, id) {
+        log("Category constructor", categoryName, id);
         this.super_item = new PopupMenu.PopupSubMenuMenuItem(categoryName);
         this.categoryName = categoryName;
         this.id = id;
@@ -41,16 +52,17 @@ var EmojiCategory = class EmojiCategory {
 
         // These options bar widgets have the same type for all categories to
         // simplify the update method
-        if ((this.id == 1) || (this.id == 5)) {
+        /*if ((this.id == 1) || (this.id == 5)) {
             this.skinTonesBar = new SkinTonesBar(true);
         } else {
             this.skinTonesBar = new SkinTonesBar(false);
-        }
+        }*/
+        this.skinTonesBar = new SkinTonesBar(false);
 
         //   Smileys & body   Peoples           Activities
-        if ((this.id == 0) || (this.id == 1) || (this.id == 5)) {
+        /*if ((this.id == 0) || (this.id == 1) || (this.id == 5)) {
             this.skinTonesBar.addBar(this.super_item.actor);
-        }
+        }*/
 
         this.categoryButton = new St.Button({
             reactive: true,
@@ -120,11 +132,14 @@ var EmojiCategory = class EmojiCategory {
      */
     load() {
         if (this._loaded) return;
-
-        for (let i = 0; i < EMOJIS_CHARACTERS[this.id].length; i++) {
-            let button = new EmojiButton.EmojiButton(
-                EMOJIS_CHARACTERS[this.id][i], EMOJIS_KEYWORDS[this.id][i]);
-            this.emojiButtons.push(button);
+        for (let subGrup = 0; subGrup < EMOJIS_CHARACTERS[this.id].length; subGrup++) {
+            for(let emojiVariant = 0; emojiVariant < EMOJIS_CHARACTERS[this.id][subGrup].length; emojiVariant++){
+                //for(let emoji = 0; emoji < EMOJIS_CHARACTERS[this.id][subGrup][emojiVariant].length; emoji++){
+                    let button = new EmojiButton.EmojiButton(
+                        EMOJIS_CHARACTERS[this.id][subGrup][emojiVariant][/*emoji*/0], EMOJIS_KEYWORDS[this.id][subGrup][emojiVariant][/*emoji*/0]);
+                    this.emojiButtons.push(button);
+                //}
+            }
         }
         this._loaded = true;
     }

@@ -46,8 +46,13 @@ var NB_COLS;
 
 let timeoutSourceId = null;
 
-const EMOJIS_CHARACTERS = Me.imports.data.emojisCharacters.ALL;
-const EMOJIS_KEYWORDS = Me.imports.data.emojisKeywords.ALL_KEYWORDS;
+var EMOJIS_CHARACTERS = Me.imports.data.emojisCharacters.ALL;
+var EMOJIS_KEYWORDS = Me.imports.data.emojisKeywords.ALL_KEYWORDS;
+
+if(EmojiCategory.DEBUG){
+    var EMOJIS_CHARACTERS = Me.imports.data.emojis_new.ALL;
+    var EMOJIS_KEYWORDS = Me.imports.data.keywords_new.ALL_KEYWORDS;
+}
 
 /*
  * This is the main class of this extension, corresponding to the button in the

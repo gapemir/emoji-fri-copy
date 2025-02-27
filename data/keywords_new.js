@@ -1,5 +1,5 @@
-var ALL_KEYWORDS = {
-  "Smileys & Emotion": [
+var ALL_KEYWORDS = [
+  [
     [
       [["grinning face"]],
       [["grinning face with big eyes"]],
@@ -198,7 +198,7 @@ var ALL_KEYWORDS = {
       [["ZZZ"]],
     ],
   ],
-  "People & Body": [
+  [
     [
       [
         ["waving hand"],
@@ -3213,7 +3213,7 @@ var ALL_KEYWORDS = {
       [["fingerprint"]],
     ],
   ],
-  "Animals & Nature": [
+  [
     [
       [["monkey face"]],
       [["monkey"]],
@@ -3388,7 +3388,7 @@ var ALL_KEYWORDS = {
       [["leafless tree"]],
     ],
   ],
-  "Food & Drink": [
+  [
     [
       [["grapes"]],
       [["melon"]],
@@ -3535,7 +3535,7 @@ var ALL_KEYWORDS = {
       [["amphora"]],
     ],
   ],
-  "Travel & Places": [
+  [
     [
       [["globe showing Europe-Africa"]],
       [["globe showing Americas"]],
@@ -3774,7 +3774,7 @@ var ALL_KEYWORDS = {
       [["water wave"]],
     ],
   ],
-  Activities: [
+[
     [
       [["jack-o-lantern"]],
       [["Christmas tree"]],
@@ -3871,7 +3871,7 @@ var ALL_KEYWORDS = {
       [["knot"]],
     ],
   ],
-  Objects: [
+[
     [
       [["glasses"]],
       [["sunglasses"]],
@@ -4173,7 +4173,7 @@ var ALL_KEYWORDS = {
       [["identification card"]],
     ],
   ],
-  Symbols: [
+[
     [
       [["ATM sign"]],
       [["litter in bin sign"]],
@@ -4422,7 +4422,7 @@ var ALL_KEYWORDS = {
       [["black square button"]],
     ],
   ],
-  Flags: [
+[
     [
       [["chequered flag"]],
       [["triangular flag"]],
@@ -4698,4 +4698,4 @@ var ALL_KEYWORDS = {
     ],
     [[ ["flag: England"], ["flag: Scotland"], ["flag: Wales"]]],
   ],
-};
+];
